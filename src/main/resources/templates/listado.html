@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Lista de Estudiante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="row justify-content-md-center">
+    <div class="row justify-content-center">
+        <h1 class="col-12 ">Listado de Estudiantes</h1>
+    </div>
+</div>
+<div class="row m-0">
+    <table class="col-12">
+        <thead style="background: #81d4fa; ">
+        <th class="col-">CDU</th>
+        <th class="col-">Nombre</th>
+        <th class="col-">Apellido</th>
+        <th class="col-">Carne</th>
+        <th class="col-">Carrera</th>
+        </thead>
+        <th:block th:each="estudiante, row:${estudiantes}">
+            <tr style="background: #e1f5fe;">
+                <th th:text="${estudiante.codigoEstudiante}"></th>
+                <th th:text="${estudiante.nombre}"></th>
+                <th th:text="${estudiante.apellido}"></th>
+                <th th:text="${estudiante.carne}"></th>
+                <th th:text="${estudiante.carrera}"></th>
+            </tr>
+        </th:block>
+    </table>
+</div>
+<div class="row justify-content-end m-3">
+    <form class="col-12" th:object="${estudiantes}" th:action="@{/agregar}">
+        <div class="row justify-content-end">
+            <div class="col-">
+                <a href="agregarEstudiante.html">
+                    <input type="submit" value="regresar">
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

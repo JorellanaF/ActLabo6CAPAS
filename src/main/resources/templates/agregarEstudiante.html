@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Nuevo Estudiante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="row m-3">
+            <h1 class="col-12 justify-content-center">Ingresa un Nuevo Estudiante</h1>
+        </div>
+        <form class="col-12" method="post" th:object="${estudiante}" th:action="@{/validar}">
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Nombre</label>
+                <input class="col-3" type="text" th:field="*{nombre}" placeholder="Ingrese nombre">
+                <span class="col-3" th:errors="*{nombre}" style="color: #FF0000"></span>
+            </div>
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Apellido</label>
+                <input class="col-3" type="text" th:field="*{apellido}" placeholder="Ingrese apellido">
+                <span class="col-3" th:errors="*{apellido}" style="color: #FF0000"></span>
+            </div>
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Carne</label>
+                <input class="col-3" type="number" th:field="*{carne}" placeholder="Ingrese el carne">
+                <span class="col-3" th:errors="*{carne}" style="color: #FF0000"></span>
+            </div>
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Carrera</label>
+                <input class="col-3" type="text" th:field="*{carrera}" placeholder="Ingrese la carrera">
+                <span class="col-3" th:errors="*{carrera}" style="color: #FF0000"></span>
+            </div>
+            <div class="form-group row justify-content-md-center m-3">
+                <div class="col-12 row justify-content-center">
+                    <input class="col- btn btn-success" type="submit" value="Agregar Estudiante">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-md-center">
+        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/eliminar}">
+            <div class="row justify-content-center">
+                <input class="col-5 m-3 btn btn-danger" type="submit" value="Eliminar">
+            </div>
+        </form>
+        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/listado}">
+            <div class="row justify-content-center">
+                <input class="col-5 m-3 btn btn-info" type="submit" value="Listado">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

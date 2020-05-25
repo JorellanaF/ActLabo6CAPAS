@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Eliminar estudiante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="row m-3">
+            <h1 class="col-12 justify-content-center">Elimina un Estudiante</h1>
+        </div>
+        <form class="col-12" method="post" th:object="${estudiante}" th:action="@{/eliminarE}">
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Codigo de Estudiante</label>
+                <input class="col-3" type="number" th:field="*{codigoEstudiante}" placeholder="Ingrese codigo del estudiante">
+                <span class="col-3" th:errors="*{codigoEstudiante}" style="color: #FF0000"></span>
+            </div>
+            <div class="form-group row justify-content-md-center m-3">
+                <div class="col-12 row justify-content-center">
+                    <input class="col- btn btn-success" type="submit" value="Eliminar Estudiante">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-md-center">
+        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/agregar}">
+            <div class="row justify-content-center">
+                <input class="col-5 m-3 btn btn-danger" type="submit" value="Agregar">
+            </div>
+        </form>
+        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/listado}">
+            <div class="row justify-content-center">
+                <input class="col-5 m-3 btn btn-info" type="submit" value="Listado">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
