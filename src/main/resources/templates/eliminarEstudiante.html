@@ -25,17 +25,22 @@
             </div>
         </form>
     </div>
-    <div class="row justify-content-md-center">
-        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/agregar}">
-            <div class="row justify-content-center">
-                <input class="col-5 m-3 btn btn-danger" type="submit" value="Agregar">
-            </div>
-        </form>
-        <form class="col-6" method="post" th:object="${estudiante}" th:action="@{/listado}">
-            <div class="row justify-content-center">
-                <input class="col-5 m-3 btn btn-info" type="submit" value="Listado">
-            </div>
-        </form>
+    <div class="col-12 row justify-content-md-center">
+        <div class="col-">
+            <form method="post" th:action="@{/agregar}">
+                <button type="submit" class="btn btn-primary px-4 m-2">Agregar Estudiante</button>
+            </form>
+        </div>
+        <div class="col-">
+            <form method="post" th:action="@{/editar}">
+                <button type="submit" class="btn btn-warning px-5 m-2">Editar</button>
+            </form>
+        </div>
+        <div class="col-">
+            <form method="post" th:action="@{/listado}">
+                <button type="submit" class="btn btn-info px-5 m-2">Listado</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>

@@ -1,5 +1,6 @@
 package com.example.actlabo6capas.controller;
 
+import com.example.actlabo6capas.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,7 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private EstudianteDAO estudianteDAO;
+    private EstudianteService estudianteService;
 
     @RequestMapping("/agregar")
     private ModelAndView agregarForm(){
@@ -38,13 +39,23 @@ public class MainController {
         return mav;
     }
 
+    @RequestMapping("/editar")
+    private ModelAndView editarForm(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("estudiante", new Estudiante());
+        mav.setViewName("editarEstudiante");
+
+        return mav;
+    }
+
     @RequestMapping("/eliminarE")
     private ModelAndView eliminar(@RequestParam("codigoEstudiante") int id){
         ModelAndView mav = new ModelAndView();
         List<Estudiante> estudiantes = null;
 
         try {
-            estudianteDAO.delete(id);
+            //estudianteDAO.delete(id);
+            estudianteService.delete(id);
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -71,12 +82,30 @@ public class MainController {
         if (result.hasErrors()){
             mav.setViewName("agregarEstudiante");
         }else {
-            estudianteDAO.insert(estudiante);
+            //estudianteDAO.insert(estudiante);
+            estudianteService.insert(estudiante);
             mav.addObject("estudiante", new Estudiante());
             mav.setViewName("agregarEstudiante");
         }
 
         return mav;
+    }
+
+    @RequestMapping("/editarE")
+    private  ModelAndView editarE(@Valid @ModelAttribute Estudiante estudiante, BindingResult result){
+        ModelAndView mav = new ModelAndView();
+
+        if (result.hasErrors()){
+            mav.setViewName("editarEstudiante");
+        }else {
+            //estudianteDAO.insert(estudiante);
+            estudianteService.insert(estudiante);
+            mav.addObject("estudiante", new Estudiante());
+            mav.setViewName("editarEstudiante");
+        }
+
+        return mav;
+
     }
 
     //Mostrar lista de Estudiante
@@ -85,7 +114,7 @@ public class MainController {
         ModelAndView mav = new ModelAndView();
         List<Estudiante> estudiantes = null;
         try {
-            estudiantes = estudianteDAO.findAll();
+            estudiantes = /*estudianteDAO.findAll()*/estudianteService.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -32,16 +32,12 @@
         </th:block>
     </table>
 </div>
-<div class="row justify-content-end m-3">
-    <form class="col-12" th:object="${estudiantes}" th:action="@{/agregar}">
-        <div class="row justify-content-end">
-            <div class="col-">
-                <a href="agregarEstudiante.html">
-                    <input type="submit" value="regresar">
-                </a>
-            </div>
-        </div>
-    </form>
+<div class="col-12 row justify-content-end">
+    <div class="col-">
+        <form method="post" th:action="@{/inicio}">
+            <button type="submit" class="btn btn-success px-4 m-2">Inicio</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

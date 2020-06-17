@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Nuevo Estudiante</title>
+    <title>Editar Estudiante</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
@@ -12,7 +12,12 @@
         <div class="row m-3">
             <h1 class="col-12 justify-content-center">Ingresa un Nuevo Estudiante</h1>
         </div>
-        <form class="col-12" method="post" th:object="${estudiante}" th:action="@{/validar}">
+        <form class="col-12" method="post" th:object="${estudiante}" th:action="@{/editarE}">
+            <div class="form-group row m-3">
+                <label class="col-2 text-center">Codigo de Estudiante</label>
+                <input class="col-3" type="number" th:field="*{codigoEstudiante}" placeholder="Ingrese codigo del estudiante">
+                <span class="col-3" th:errors="*{codigoEstudiante}" style="color: #FF0000"></span>
+            </div>
             <div class="form-group row m-3">
                 <label class="col-2 text-center">Nombre</label>
                 <input class="col-3" type="text" th:field="*{nombre}" placeholder="Ingrese nombre">
@@ -35,15 +40,15 @@
             </div>
             <div class="form-group row justify-content-md-center m-3">
                 <div class="col-12 row justify-content-center">
-                    <input class="col- btn btn-success" type="submit" value="Agregar Estudiante">
+                    <input class="col- btn btn-success" type="submit" value="Editar">
                 </div>
             </div>
         </form>
     </div>
     <div class="col-12 row justify-content-md-center">
         <div class="col-">
-            <form method="post" th:action="@{/editar}">
-                <button type="submit" class="btn btn-warning px-5 m-2">Editar</button>
+            <form method="post" th:action="@{/agregar}">
+                <button type="submit" class="btn btn-primary px-4 m-2">Agregar Estudiante</button>
             </form>
         </div>
         <div class="col-">
